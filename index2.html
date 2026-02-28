@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-lLe9Y9WqXU7hYvEvX7S9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9Y9" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>우태호</title>
 </head>
 <body>
-<h1>  태호야 속았냐 </h1>
+<h1> 태호야 속았냐 </h1>
 
+<button id="kakao-link-btn" onclick="sendKakaoMessage()" style="padding: 10px 20px; background-color: #FEE500; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+    카카오톡으로 송금 낚시 보내기
+</button>
+
+<script>
+    // 2. 카카오 SDK 초기화
+    // [내 애플리케이션] > [앱 설정] > [앱 키]에서 'JavaScript 키'를 복사해서 넣으세요.
+    Kakao.init('23d2f15297704f49b8b173a8a2e93e82');
+
+    // 초기화 확인 (개발자 도구 Console 탭에서 true가 뜨는지 확인용)
+    console.log(Kakao.isInitialized());
+
+    function sendKakaoMessage() {
+        // 3. 메시지 보내기 실행
+        Kakao.Share.sendCustom({
+            templateId: 130061, // 아까 만든 템플릿 ID(숫자)를 넣으세요.
+        });
+    }
+</script>
 </body>
 </html>
